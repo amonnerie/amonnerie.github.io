@@ -1,7 +1,14 @@
-# amonnerie_belly_button_challenge.github.io
-# By Andrea Monnerie
+# leaflet-challenge
+By Andrea Monnerie
+  (WITH AID: used Leaflet's online tutorial "Interactive Choropleth Map" as reference:
+  https://leafletjs.com/examples/choropleth/)
 
-This site explores the samples given by the following API: https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json. The dataset is from a study that recoded the microbial species (or OTUs) found in the subject's/sample's belly button. The site displays the demographic information, a horizontal bar graph of the top OTUs of the sample, and a bubble chart of all the OTUs in the sample along with a dropdown menu to select the sample of interest by the sample's id.
+This a map that visualizes the json data from the United States Geological Survey of USGS. This map covers data of earthquakes globally:
 
-## Link of GitHub Page
-https://amonnerie.github.io/
+ - This map (a screenshot of the map below) shows each earthquake event mapped by its coordinates along with additional information (coordinates, location/address, magnitude, depth) when the user clicks on the event marker. 
+
+ - The size of the radius of each event reflects with the magnitude of the earthquakes.
+
+ - The color indicated the depth of the earthquake.
+
+![Screenshot 2023-07-24 091838](https://github.com/amonnerie/leaflet-challenge/assets/127140876/4754fab2-34a0-427f-a032-b97a56cd20b7)
