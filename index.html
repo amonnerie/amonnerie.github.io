@@ -5,30 +5,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Earthquake Map</title>
+  <link rel="shortcut icon" href="shark-fin.png" type="image/x-icon">
+  <title>Shark Attack Data</title>
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin="" />
 
+  <!-- DataTable CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- The div that holds our map -->
-  <div id="map"></div>
+  <div class="container">
+    <div class="title">
+      <div class="title-block">
+        <h1>North American Shark Attack Data</h1>
+        <h2>From 2010 to 2018</h2>
+      </div>
+    </div>
+    <div class="content">
+      <div class= "first-row">
+        <h4>This is a visualization of the data from <a href="https://www.kaggle.com/datasets/teajay/global-shark-attacks" target="_blank">Kaggle by Toby Jolly</a> 
+          which that data came from this <a href="https://www.sharkattackfile.net/index.htm" target="_blank">site</a></h4>
+        <h4>We have three visualizations: two maps and one graph according to the inputs from the user: Year, Country (US, Canada, or Mexico), Type of Attack, Activity, and Fatal</h4>
+      </div>
+      <div class= "second-row">
+        <div class="input">
+            <div class="well">
+            <h5>Year:</h5>
+            <select id="selyear" onchange="getValues()">
+                <option selected="selected">All</option>
+                <option>2018</option>
+                <option>2017</option>
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+            </select>
+            </div>
+            <div class="well">
+                <h5>Country:</h5>
+                <select id="selcountry" onchange="getValues()">
+                  <option selected="selected">All</option>
+                  <option>USA</option>
+                  <option>MEXICO</option>
+                  <option>CANADA</option>
+                </select>
+            </div>
+            <div class="well">
+                <h5>Type of Attack:</h5>
+                <select id="seltype" onchange="getValues()">
+                  <option selected="selected">All</option>
+                  <option>Unprovoked</option>
+                  <option>Provoked</option>
+                  <option>Other</option>
+                </select>
+            </div>
+            <div class="well">
+              <h5>Activity before attacked:</h5>
+              <select id="selact" onchange="getValues()">
+                <option selected="selected">All</option>
+                <option>Swimming</option>
+                <option>Fishing</option>
+                <option>Surfing</option>
+                <option>Playing</option>
+                <option>Floating</option>
+                <option>Kayaking</option>
+                <option>Shark Related Activites</option>
+                <option>Other</option>
+                <option>Unknown</option>
+              </select>
+          </div>
+            <div class="well">
+                <h5>Fatal (Y/N):</h5>
+                <select id="selfatal" onchange="getValues()">
+                  <option selected="selected">All</option>
+                  <option>Y</option>
+                  <option>N</option>
+                </select>
+            </div>
+        </div>
+      <div class="map-block1">
+        <div id="visual1" style="height:100%;"></div>
+      </div>
+    </div>
+    <div class= "third-row">
+      <div class="map-block2">
+        <!--div id="visual2"><p>MAP 2 here</p></div-->
+        <!--canvas id="visual2" width="400" height="400"></canvas-->
+        <table id="visual2" class="display" width="100%"></table>
+      </div>
+      <div class="graph-block">
+        <div id="visual3" style="height:100%;"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <h3>Project by Group 3 (Cassandra Graf, Lauren Amoroso, and Andrea Monnerie)</h3>
+  </footer>
 
-  <!-- Leaflet JS -->
+<!-- D3 JS -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- Plotly JS -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
-  <!-- D3 JavaScript -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Our JavaScript -->
+
+<!-- DataTables JS  -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.13.5/features/scrollResize/dataTables.scrollResize.min.js"></script>
+
+<!-- Chart JS  -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+<!-- Logic JS   -->
   <script type="text/javascript" src="logic.js"></script>
+
 </body>
 
 </html>
